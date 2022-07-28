@@ -10,7 +10,16 @@ export default class TaskController {
       const tasks = await this.service.getAllTasks();
       return res.status(201).json(tasks);
     } catch (error) {
-     next(error);
+      next(error);
     }
-  }
+  };
+
+  deleteTask = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const task = await this.service.deleteTask(req.params.id);
+      return res.status(201).json(task);
+    } catch (error) {
+      next(error);
+    }
+  };
 }

@@ -7,4 +7,9 @@ export default class TaskService {
     const tasks = await this.model.getAllTasks();
     return tasks;
   }
+
+  async deleteTask(id: number) {
+    const task = await this.model.deleteTask(id);
+    return task;
+  }
 }
