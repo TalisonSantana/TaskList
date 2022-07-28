@@ -15,7 +15,7 @@ const routeUser = Router();
 
 routeUser.get('/', entityTask().getAllTasks);
 // routeUser.post('/', entityTask().getAllTasks);
-// routeUser.put('/', entityTask().getAllTasks);
+routeUser.put('/', entityTask().updateTask);
 routeUser.delete('/:id', entityTask().deleteTask);
 
 export default routeUser;

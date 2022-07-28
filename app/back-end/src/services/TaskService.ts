@@ -12,4 +12,11 @@ export default class TaskService {
     const task = await this.model.deleteTask(id);
     return task;
   }
+
+  async updateTask(body: any) {
+    const { id, taskName, description, inProgress } = body;
+    const status = inProgress === "true" ? true : false;
+    const task = await this.model.updateTask(id, taskName, description, status);
+    return task;
+  }
 }

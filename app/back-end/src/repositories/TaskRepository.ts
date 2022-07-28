@@ -17,4 +17,14 @@ export default class TaskRepository {
     });
     return task;
   }
+
+  async updateTask(id: number, taskName: string, description: string, inProgress: boolean) {
+    const task = await this.tasks.update({taskName, description, inProgress}, {
+      where: {
+        id,
+      },
+    });
+    return task;
+
+  }
 }

@@ -17,9 +17,18 @@ export default class TaskController {
   deleteTask = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const task = await this.service.deleteTask(req.params.id);
-      return res.status(201).json(task);
+      return res.status(200).json(task);
     } catch (error) {
       next(error);
     }
   };
+
+  updateTask = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const task = await this.service.updateTask(req.body);
+      return res.status(201).json(task);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
