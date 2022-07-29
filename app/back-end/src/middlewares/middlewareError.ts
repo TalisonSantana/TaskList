@@ -1,4 +1,6 @@
-const errorMiddleware = (err: any, req: any, res: any, _next: any) => {
+import { NextFunction, Request, Response } from "express";
+
+const errorMiddleware = (err: {code: number, message: string}, req: Request, res: Response, _next: NextFunction) => {
   if (err.code) {
     return res.status(err.code).json({ message: err.message });
   }

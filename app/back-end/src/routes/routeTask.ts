@@ -14,7 +14,7 @@ import TaskService from '../services/TaskService';
 const routeUser = Router();
 
 routeUser.get('/', entityTask().getAllTasks);
-// routeUser.post('/', entityTask().getAllTasks);
+routeUser.post('/', entityTask().createTask);
 routeUser.put('/', entityTask().updateTask);
 routeUser.delete('/:id', entityTask().deleteTask);
 
