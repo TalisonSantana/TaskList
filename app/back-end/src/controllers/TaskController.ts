@@ -9,7 +9,7 @@ export default class TaskController {
   getAllTasks = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const tasks = await this.service.getAllTasks();
-      return res.status(201).json(tasks);
+      return res.status(200).json(tasks);
     } catch (error) {
       next(error);
     }
