@@ -15,9 +15,8 @@ export default class TaskService {
     return task;
   }
 
-  async updateTask(body: ITask): Promise<[affectedCount: number]> {
-    const task = await this.model.updateTask(body);
-    console.log(task);
+  async updateTask(id: number, body: ITask): Promise<[affectedCount: number]> {
+    const task = await this.model.updateTask(id, body);
     return task;
   }
 
