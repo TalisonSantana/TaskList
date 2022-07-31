@@ -6,6 +6,8 @@ export default class TaskRepository {
     this.tasks = tasks;
   }
   async getAllTasks(): Promise<ITask[]> {
+    console.log('entrou');
+    
     const tasks = await this.tasks.findAll();
     return tasks;
   }
@@ -19,8 +21,8 @@ export default class TaskRepository {
     return task;
   }
 
-  async updateTask(body: ITask): Promise<[affectedCount: number]> {
-    const { id, taskName, description, inProgress } = body;
+  async updateTask(id: number, body: ITask): Promise<[affectedCount: number]> {
+    const { taskName, description, inProgress } = body;
     const status = inProgress === "true" ? true : false;
     const task = await this.tasks.update(
       { taskName, description, inProgress: status },
@@ -35,7 +37,7 @@ export default class TaskRepository {
 
   async createTask(body: ITask): Promise<ITask> {
     const { taskName, description, inProgress } = body;
-    const status = inProgress === "true" ? true : false;
+    const status = typeof inProgress === "string" ? inProgress === "true" ? true : false : inProgress;
     const task = await this.tasks.create({
       taskName,
       description,

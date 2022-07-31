@@ -1,14 +1,11 @@
 import React from 'react';
-import Header from './components/header';
 import RoutesApp from './Routes';
+import './App.css';
 
 function App() {
 
   return (
-    <>
-    <Header/>
     <RoutesApp/>
-    </>
   );
 }
 

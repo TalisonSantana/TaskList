@@ -26,8 +26,9 @@ export default class TaskController {
   };
 
   updateTask = async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
     try {
-      const task = await this.service.updateTask(req.body);
+      const task = await this.service.updateTask(Number(id), req.body);
       return res.status(200).json(task);
     } catch (error) {
       next(error);
