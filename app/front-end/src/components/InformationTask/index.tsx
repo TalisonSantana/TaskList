@@ -1,7 +1,6 @@
 import React from "react";
 import ITask from "../../interfaces/ITask";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
-import "./Style.css";
 
 function InformationTask({
   task,

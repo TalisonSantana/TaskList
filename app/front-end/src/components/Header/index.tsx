@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { CgPlayListCheck, CgPlayListRemove, CgPlayList } from "react-icons/cg";
 import MyContext from "../../context";
-import "./Style.css";
 
 function Header() {
   const { inputSearch, statusSearch } = useContext(MyContext);

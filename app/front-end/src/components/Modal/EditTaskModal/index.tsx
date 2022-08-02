@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ITask from "../../../interfaces/ITask";
 import api from "../../../services/rest/TaskService";
-import "./Style.css";
 
 function EditTaskModal({
   setIsLoading,

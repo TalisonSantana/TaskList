@@ -8,7 +8,6 @@ import CreateTaskModal from "../../components/Modal/CreateTaskModal";
 import EditTaskModal from "../../components/Modal/EditTaskModal";
 import DeleteTaskModal from "../../components/Modal/DeleteTaskModal";
 
-import "./Style.css";
 import NoTasks from "../../components/NoTasks";
 import MyContext from "../../context";
 

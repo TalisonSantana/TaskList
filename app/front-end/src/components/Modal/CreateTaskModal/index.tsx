@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import api from "../../../services/rest/TaskService";
-import "./Style.css";
 
 function CreateTaskModal({
   setIsLoading,
