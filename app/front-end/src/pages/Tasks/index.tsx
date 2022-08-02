@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ITask from "../../interfaces/ITask";
-import api from "../../services/rest/TaskService";
 import { BiListPlus } from "react-icons/bi";
 import Header from "../../components/Header";
 import Tenor from "../../utils/tenor.gif";
@@ -8,31 +7,30 @@ import InformationTask from "../../components/InformationTask";
 import CreateTaskModal from "../../components/Modal/CreateTaskModal";
 import EditTaskModal from "../../components/Modal/EditTaskModal";
 import DeleteTaskModal from "../../components/Modal/DeleteTaskModal";
+
 import "./Style.css";
+import NoTasks from "../../components/NoTasks";
+import MyContext from "../../context";
 
 function Tasks() {
-  const [tasks, setTasks] = useState<ITask[]>([]);
+  const { tasks, isLoading, setIsLoading, loadTasks } = useContext(MyContext);
   const [task, setTask] = useState<ITask>({} as ITask);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDeleteTaskModal, setIsDeleteTaskModal] = useState<boolean>(false);
   const [isCreateTaskModal, setIsCreateTaskModal] = useState<boolean>(false);
   const [isEditTaskModal, setIsEditTaskModal] = useState<boolean>(false);
 
-  async function loadTasks() {
-    const response = await api.get("/tasks");
-    setTasks(response.data);
-  }
-
   useEffect(() => {
+    console.log(isLoading);
+    
     if (isLoading) {
       setTimeout(async () => {
         loadTasks();
-        setIsLoading(false);
       }, 1000);
     }
   }, [isLoading]);
 
   return (
+    <div>
     <div className="container-pai">
       <Header />
       {isDeleteTaskModal && (
@@ -55,24 +53,35 @@ function Tasks() {
           setIsCreateTaskModal={() => setIsCreateTaskModal(false)}
         />
       )}
-      <main className="container">
+      <main className="mt-36 container">
+        {!isLoading && tasks.length === 0 && (
+          <NoTasks setIsCreateTaskModal={() => setIsCreateTaskModal(true)} />
+        )}
         {isLoading && (
           <div className="w-12 h-12">
             <img src={Tenor} alt="description"></img>
           </div>
         )}
-        {!isLoading && (
+        {!isLoading && tasks.length > 0 && (
           <section>
-            <div className="titulo-list">
-              <div>Name</div>
-              <div>Description</div>
-              <div>In Progress</div>
+            <div className="xxs:text-base xs:text-lg sm:text-xl md:text-2xl titulo-list">
+              <div>
+                <div>Name</div>
+              </div>
+              <div>
+                <div>Description</div>
+              </div>
+              <div>
+                <div>In Progress</div>
+              </div>
+              <div className="flex">
               <div
                 onClick={() => setIsCreateTaskModal(true)}
                 className="icon-add"
               >
-                <BiListPlus fontSize="23px" />
+                  <BiListPlus fontSize="25px" />
               </div>
+                </div>
             </div>
             <div className="container-task">
               {tasks.map((task) => (
@@ -93,6 +102,7 @@ function Tasks() {
           </section>
         )}
       </main>
+    </div>
     </div>
   );
 }

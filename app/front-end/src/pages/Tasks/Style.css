@@ -5,7 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 450px;
+  width: 100%;
+  max-width: 75% !important;
   background: white;
   padding: 10px 2%;
   box-shadow: -3px 0px 53px 5px rgba(0,0,0,0.1);
@@ -15,6 +16,8 @@
   display: flex;
   color: black;
   margin-bottom: 7px;
+  justify-content: space-between;
+  font-size: 15px;
 }
 
 
@@ -39,13 +42,21 @@ img {
   min-height: 301px;
 }
 
+.container-task::-webkit-scrollbar {
+  width: 7px;
+}
+
+.container-task::-webkit-scrollbar-thumb {
+  background-color: #e7e9ee;
+  border-radius: 6px;
+}
 .container-pai {
   width: 100vw;
   height: 100vh;
   overflow-y: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 

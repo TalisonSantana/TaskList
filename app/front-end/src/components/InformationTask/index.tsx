@@ -13,9 +13,9 @@ function InformationTask({
   setEditTask: () => void;
 }) {
   return (
-    <div className="information-task" key={task.id}>
-      <div className="taskName">{task.taskName}</div>
-      <div className="description">{task.description}</div>
+    <div className="information-task w-full text-sm">
+      <div className="taskName truncate xxs:max-w-15 xs:max-w-13 sm:max-w-11 md:max-w-8">{task.taskName}</div>
+      <div className="description truncate xxs:max-w-22 xs:max-w-23 sm:max-w-19 md:max-w-12">{task.description}</div>
       <div className={task.inProgress ? "text-green" : "text-red"}>
         {task.inProgress ? "true" : "false"}
       </div>

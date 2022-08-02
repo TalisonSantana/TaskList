@@ -5,9 +5,7 @@ export default class TaskRepository {
   constructor(private tasks = Task) {
     this.tasks = tasks;
   }
-  async getAllTasks(): Promise<ITask[]> {
-    console.log('entrou');
-    
+  async getAllTasks(): Promise<ITask[]> {    
     const tasks = await this.tasks.findAll();
     return tasks;
   }
@@ -37,7 +35,7 @@ export default class TaskRepository {
 
   async createTask(body: ITask): Promise<ITask> {
     const { taskName, description, inProgress } = body;
-    const status = typeof inProgress === "string" ? inProgress === "true" ? true : false : inProgress;
+    const status = inProgress === "true" ? 1 : 0;
     const task = await this.tasks.create({
       taskName,
       description,
