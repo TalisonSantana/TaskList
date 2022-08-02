@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import api from "../../../services/rest/TaskService";
-import "./Style.css";
 
 function CreateTaskModal({
   setIsLoading,
@@ -18,15 +17,16 @@ function CreateTaskModal({
   }
 
   async function handleSaveTask() {
-    // const response = api.put(`/tasks/${task.id}`, {
-    const response = await api.post(`/tasks`, {
-      taskName: name,
-      description,
-      inProgress,
-    });
-    if (response.status === 201) window.alert("Task created successfully");
-    console.log(response);
-
+    try {
+      await api.post(`/tasks`, {
+        taskName: name,
+        description,
+        inProgress,
+      });
+      window.alert("Task created successfully");
+    } catch (error: any) {
+      window.alert(error.response.data.message);
+    }
     setIsCreateTaskModal();
     setIsLoading();
   }

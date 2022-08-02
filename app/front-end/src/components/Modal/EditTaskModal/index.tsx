@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ITask from "../../../interfaces/ITask";
 import api from "../../../services/rest/TaskService";
-import "./Style.css";
 
 function EditTaskModal({
   setIsLoading,
@@ -23,16 +22,18 @@ function EditTaskModal({
   }
 
   async function handleSaveTask() {
-    const response = await api.put(`/tasks/${task.id}`, {
-      taskName: name,
-      description,
-      inProgress,
-    });
-    if (response.status === 200) window.alert("Task updated successfully");
-    console.log(response);
-
-    setIsEditTaskModal();
-    setIsLoading();
+    try {
+      await api.put(`/tasks/${task.id}`, {
+        taskName: name,
+        description,
+        inProgress,
+      });
+      setIsEditTaskModal();
+      setIsLoading();
+      window.alert("Task updated successfully");
+    } catch (error: any) {
+      window.alert(error.response.data.message);
+    }
   }
 
   return (
@@ -42,26 +43,26 @@ function EditTaskModal({
           <div>Edit Task</div>
         </div>
         <div className="p-1 form">
-            <div>
-              <label htmlFor="name">Name: </label>
+          <div>
+            <label htmlFor="name">Name: </label>
             <input
-            className="border-solid border-1 bg-white mt-1"
+              className="border-solid border-1 bg-white mt-1"
               type="text"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            </div>
-            <div>
-              <label htmlFor="description">Description: </label>
+          </div>
+          <div>
+            <label htmlFor="description">Description: </label>
             <input
-            className="border-solid border-1 bg-white mt-1"
+              className="border-solid border-1 bg-white mt-1"
               type="text"
               name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            </div>
+          </div>
           <div className="pt-1">
             <label htmlFor="inProgress">In Progress: </label>
             <select
@@ -74,14 +75,24 @@ function EditTaskModal({
               <option value="false">false</option>
             </select>
           </div>
-        <div className="flex justify-around items-center mt-1">
-          <div>
-            <button className="p-1 border-solid border-1 button" onClick={handleSaveTask}>Save</button>
+          <div className="flex justify-around items-center mt-1">
+            <div>
+              <button
+                className="p-1 border-solid border-1 button"
+                onClick={handleSaveTask}
+              >
+                Save
+              </button>
+            </div>
+            <div className="button">
+              <button
+                className="p-1 border-solid border-1 button"
+                onClick={setIsEditTaskModal}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
-          <div className="button">
-            <button className="p-1 border-solid border-1 button" onClick={setIsEditTaskModal}>Cancel</button>
-          </div>
-        </div>
         </div>
       </div>
     </div>
