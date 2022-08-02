@@ -8,4 +8,45 @@
   
   body {
     font-family: sans-serif;
+    overflow-y: hidden;
+  }
+
+  .container-modal {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    z-index: 9999;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .information-modal {
+    z-index: 9999999;
+  }
+
+  .button {
+    background-color: #F0F0F2 !important;
+  }
+  
+  .button:hover {
+    background-color: #e7e9ee !important;
+  }
+
+  .input {
+    margin-top: 5px;
+    background-color: #e7e9ee;
+    border: solid 1px;
+  }
+
+  .form {
+    background-color: #F0F0F2 !important;
+    padding-left: 5px;
+  }
+
+  .shadow-container {
+    box-shadow: -3px 0px 53px 5px rgba(0,0,0,0.1);
   }

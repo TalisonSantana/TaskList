@@ -37,32 +37,35 @@ function EditTaskModal({
 
   return (
     <div id="modal" onClick={handleClose} className="container-modal">
-      <div className="information-modal">
-        <div className="message">
-          <div>Edit</div>
+      <div className="w-96 h-37 relative bg-white information-modal">
+        <div className="flex justify-center">
+          <div>Edit Task</div>
         </div>
-        <div className="form">
-          <div>
-            <label htmlFor="Name">Name: </label>
+        <div className="p-1 form">
+            <div>
+              <label htmlFor="name">Name: </label>
             <input
+            className="border-solid border-1 bg-white mt-1"
               type="text"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-          </div>
-          <div>
-            <label htmlFor="description">Description: </label>
+            </div>
+            <div>
+              <label htmlFor="description">Description: </label>
             <input
+            className="border-solid border-1 bg-white mt-1"
               type="text"
               name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-          </div>
-          <div>
+            </div>
+          <div className="pt-1">
             <label htmlFor="inProgress">In Progress: </label>
             <select
+              className="border-solid border-1 bg-white"
               name="inProgress"
               value={inProgress}
               onChange={(e) => setInProgress(e.target.value)}
@@ -71,14 +74,14 @@ function EditTaskModal({
               <option value="false">false</option>
             </select>
           </div>
+        <div className="flex justify-around items-center mt-1">
+          <div>
+            <button className="p-1 border-solid border-1 button" onClick={handleSaveTask}>Save</button>
+          </div>
+          <div className="button">
+            <button className="p-1 border-solid border-1 button" onClick={setIsEditTaskModal}>Cancel</button>
+          </div>
         </div>
-        <div className="button-container">
-          <div className="button">
-            <button onClick={handleSaveTask}>Save</button>
-          </div>
-          <div className="button">
-            <button onClick={setIsEditTaskModal}>Cancel</button>
-          </div>
         </div>
       </div>
     </div>

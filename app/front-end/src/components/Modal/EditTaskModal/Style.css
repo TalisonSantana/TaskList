@@ -1,4 +1,4 @@
-.container-modal {
+/* .container-modal {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -9,9 +9,9 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
-}
+} */
 
-.information-modal {
+/* .information-modal {
   border-radius: 2px;
   width: 320px;
   height: 135px;
@@ -57,4 +57,4 @@
   background-color: #F0F0F2 !important;
   border-radius: 5px;
   padding-left: 5px;
-}
+} */
