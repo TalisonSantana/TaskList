@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
 const errorMiddleware = (err: {code: number, message: string}, req: Request, res: Response, _next: NextFunction) => {
+  console.log(err);
+  
   if (err.code) {
     return res.status(err.code).json({ message: err.message });
   }

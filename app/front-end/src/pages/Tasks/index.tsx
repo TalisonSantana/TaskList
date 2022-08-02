@@ -21,7 +21,7 @@ function Tasks() {
 
   useEffect(() => {
     console.log(isLoading);
-    
+
     if (isLoading) {
       setTimeout(async () => {
         loadTasks();
@@ -30,8 +30,7 @@ function Tasks() {
   }, [isLoading]);
 
   return (
-    <div>
-    <div className="container-pai">
+    <div className="mb-8 w-screen h-screen flex items-center justify-start flex-col gap-8 ">
       <Header />
       {isDeleteTaskModal && (
         <DeleteTaskModal
@@ -53,7 +52,7 @@ function Tasks() {
           setIsCreateTaskModal={() => setIsCreateTaskModal(false)}
         />
       )}
-      <main className="mt-36 container">
+      <div className="shadow-container h-full max-h-97 min-h-97 rounded-2xl py-3 px-3 flex items-center justify-center w-full max-w-70 bg-white">
         {!isLoading && tasks.length === 0 && (
           <NoTasks setIsCreateTaskModal={() => setIsCreateTaskModal(true)} />
         )}
@@ -63,8 +62,8 @@ function Tasks() {
           </div>
         )}
         {!isLoading && tasks.length > 0 && (
-          <section>
-            <div className="xxs:text-base xs:text-lg sm:text-xl md:text-2xl titulo-list">
+          <div className="h-full w-full">
+            <div className="xxs:text-base xs:text-lg sm:text-xl md:text-2xl flex to-black mr-2 justify-between ">
               <div>
                 <div>Name</div>
               </div>
@@ -75,15 +74,15 @@ function Tasks() {
                 <div>In Progress</div>
               </div>
               <div className="flex">
-              <div
-                onClick={() => setIsCreateTaskModal(true)}
-                className="icon-add"
-              >
+                <div
+                  onClick={() => setIsCreateTaskModal(true)}
+                  className="icon-add"
+                >
                   <BiListPlus fontSize="25px" />
-              </div>
                 </div>
+              </div>
             </div>
-            <div className="container-task">
+            <div className="overflow-y-auto h-full max-h-9/10 container-task">
               {tasks.map((task) => (
                 <InformationTask
                   key={task.id}
@@ -99,10 +98,9 @@ function Tasks() {
                 />
               ))}
             </div>
-          </section>
+          </div>
         )}
-      </main>
-    </div>
+      </div>
     </div>
   );
 }
