@@ -1,6 +1,6 @@
 import React from "react";
 import ITask from "../../../interfaces/ITask";
-import api from "../../../services/rest/TaskService";
+import { deleteTask } from "../../../services/rest/TaskService";
 
 function DeleteTaskModal({
   task,
@@ -17,8 +17,8 @@ function DeleteTaskModal({
   }
 
   async function handleDeleteTask() {
-    const response = await api.delete(`/tasks/${id}`);
-    if(response.status === 200) window.alert("Task deleted successfully");
+    const response = await deleteTask(id);
+    if (response.status === 200) window.alert("Task deleted successfully");
     setIsDeleteTaskModal();
     setIsLoading();
   }
@@ -30,12 +30,20 @@ function DeleteTaskModal({
         </div>
         <div className="flex justify-around items-center mt-1">
           <div>
-            <button className="button border-solid border-1" onClick={handleDeleteTask} type="button">
+            <button
+              className="button border-solid border-1"
+              onClick={handleDeleteTask}
+              type="button"
+            >
               Continue
             </button>
           </div>
           <div>
-            <button className="button border-solid border-1" onClick={setIsDeleteTaskModal} type="button">
+            <button
+              className="button border-solid border-1"
+              onClick={setIsDeleteTaskModal}
+              type="button"
+            >
               Cancel
             </button>
           </div>

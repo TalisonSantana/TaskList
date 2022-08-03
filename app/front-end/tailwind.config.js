@@ -84,11 +84,9 @@ const width = {
   screen: "100vw",
   sm: "25rem",
   lg: "50rem",
-}
+};
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     fontSize: {
       x: ".63rem", //10px
@@ -314,4 +312,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

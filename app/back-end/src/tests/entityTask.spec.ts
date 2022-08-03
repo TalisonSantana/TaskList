@@ -14,7 +14,7 @@ describe(" 1 - Testando get na rota /tasks", () => {
   const mockTask = [
     {
       id: 1,
-      taskName: "Teste",
+      name: "Teste",
       description: "Teste",
       inProgress: false,
     },
@@ -37,7 +37,7 @@ describe(" 1 - Testando get na rota /tasks", () => {
 
 describe(" 1 - Testando post na rota /tasks", () => {
   const mockTask = {
-    taskName: "Teste",
+    name: "Teste",
     description: "Teste",
     inProgress: false,
   };
@@ -63,7 +63,7 @@ describe(" 1 - Testando post na rota /tasks", () => {
 describe(" 1 - Testando put na rota /tasks", () => {
   const mockTask = {
     id: 1,
-    taskName: "Teste",
+    name: "Teste",
     description: "Teste",
     inProgress: false,
   };
@@ -79,7 +79,7 @@ describe(" 1 - Testando put na rota /tasks", () => {
   it("1 - rota retorna as tarefas rota /tasks", async () => {
     const chaiHttpResponse = await chai
       .request(app)
-      .put("/tasks")
+      .put("/tasks/1")
       .send(mockTask);
     expect(chaiHttpResponse.status).to.be.equal(200);
     expect(chaiHttpResponse.body).to.be.eql(1);

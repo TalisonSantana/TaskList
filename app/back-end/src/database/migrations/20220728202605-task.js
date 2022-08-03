@@ -9,7 +9,7 @@ module.exports = {
       primaryKey: true,
       type: Sequelize.INTEGER
     },
-    task_name: {
+    name: {
       type: Sequelize.STRING
     },
     description: {

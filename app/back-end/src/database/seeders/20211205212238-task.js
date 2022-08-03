@@ -2,12 +2,12 @@ module.exports = {
   up: async (queryInterface) => {
     await queryInterface.bulkInsert('tasks', [
       {
-        task_name: 'SQL',
+        name: 'SQL',
         in_progress: true,
         description: 'Estudar fundamentos básicos de SQL',
       },
       {
-        task_name: 'Node',
+        name: 'Node',
         in_progress: true,
         description: 'Estudar fundamentos básicos de Node',
       },

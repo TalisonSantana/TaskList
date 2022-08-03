@@ -13,14 +13,13 @@ import MyContext from "../../context";
 
 function Tasks() {
   const { tasks, isLoading, setIsLoading, loadTasks } = useContext(MyContext);
+
   const [task, setTask] = useState<ITask>({} as ITask);
   const [isDeleteTaskModal, setIsDeleteTaskModal] = useState<boolean>(false);
   const [isCreateTaskModal, setIsCreateTaskModal] = useState<boolean>(false);
   const [isEditTaskModal, setIsEditTaskModal] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(isLoading);
-
     if (isLoading) {
       setTimeout(async () => {
         loadTasks();
@@ -62,7 +61,7 @@ function Tasks() {
         )}
         {!isLoading && tasks.length > 0 && (
           <div className="h-full w-full">
-            <div className="xxs:text-base xs:text-lg sm:text-xl md:text-2xl flex to-black mr-2 justify-between ">
+            <div className="xxs:text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl flex to-black mr-2 justify-between ">
               <div>
                 <div>Name</div>
               </div>
@@ -82,7 +81,7 @@ function Tasks() {
               </div>
             </div>
             <div className="overflow-y-auto h-full max-h-9/10 container-task">
-              {tasks.map((task) => (
+              {tasks.map((task: ITask) => (
                 <InformationTask
                   key={task.id}
                   task={task}
