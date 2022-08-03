@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import ITask from "../../interfaces/ITask";
 import { BiListPlus } from "react-icons/bi";
-import Header from "../../components/Header";
+import Header from "./components/Header/index";
 import Tenor from "../../utils/tenor.gif";
-import InformationTask from "../../components/InformationTask";
-import CreateTaskModal from "../../components/Modal/CreateTaskModal";
-import EditTaskModal from "../../components/Modal/EditTaskModal";
-import DeleteTaskModal from "../../components/Modal/DeleteTaskModal";
+import InformationTask from "./components/InformationTask";
+import CreateTaskModal from "./components/Modal/CreateTaskModal";
+import EditTaskModal from "./components/Modal/EditTaskModal";
+import DeleteTaskModal from "./components/Modal/DeleteTaskModal";
 
-import NoTasks from "../../components/NoTasks";
+import NoTasks from "../../pages/NoTasks";
 import MyContext from "../../context";
 
 function Tasks() {

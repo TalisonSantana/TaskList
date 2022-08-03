@@ -1,5 +1,5 @@
 import ITask from "../interfaces/ITask";
-import Task from "../database/models/Task";
+import Task from "../database/models/task";
 
 export default class TaskRepository {
   constructor(private tasks = Task) {

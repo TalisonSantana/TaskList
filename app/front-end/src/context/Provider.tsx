@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ITask from "../interfaces/ITask";
-import { getTasks } from "../services/rest/TaskService";
+import { getTasks } from "../services/rest/taskService";
 import MyContext from "./index";
 
 function MyProvider({ children }: { children: React.ReactNode }) {

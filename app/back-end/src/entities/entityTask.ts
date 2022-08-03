@@ -1,12 +1,12 @@
-import TaskController from "../controllers/TaskController";
-import TaskRepository from "../repositories/TaskRepository";
-import TaskService from "../services/TaskService";
+import TaskController from "../controllers/taskController";
+import TaskRepository from "../repositories/taskRepository";
+import TaskService from "../services/taskService";
 
-const entityTask = () => {
+const EntityTask = () => {
   const repository = new TaskRepository();
   const service = new TaskService(repository);
   const controller = new TaskController(service);
   return controller;
 };
 
-export default entityTask;
+export default EntityTask;

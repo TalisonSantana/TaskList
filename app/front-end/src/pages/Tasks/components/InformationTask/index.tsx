@@ -1,5 +1,5 @@
 import React from "react";
-import ITask from "../../interfaces/ITask";
+import ITask from "../../../../interfaces/ITask";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 
 function InformationTask({

@@ -1,6 +1,6 @@
 import React from "react";
-import ITask from "../../../interfaces/ITask";
-import { deleteTask } from "../../../services/rest/TaskService";
+import ITask from "../../../../../interfaces/ITask";
+import { deleteTask } from "../../../../../services/rest/taskService";
 
 function DeleteTaskModal({
   task,
