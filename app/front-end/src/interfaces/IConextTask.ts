@@ -8,4 +8,12 @@ export interface IConextTask {
   setIsLoading: (isLoading: boolean) => void;
   loadTasks: () => void;
   statusSearch: (value: null | boolean) => void;
+  task: ITask;
+  setTask: (task: ITask) => void;
+  isDeleteTaskModal: boolean;
+  setIsDeleteTaskModal: (isDeleteTaskModal: boolean) => void;
+  isCreateTaskModal: boolean;
+  setIsCreateTaskModal: (isCreateTaskModal: boolean) => void;
+  isEditTaskModal: boolean;
+  setIsEditTaskModal: (isEditTaskModal: boolean) => void;
 }
