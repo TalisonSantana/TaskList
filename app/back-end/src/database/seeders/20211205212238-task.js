@@ -8,8 +8,18 @@ module.exports = {
       },
       {
         name: 'Node',
-        in_progress: true,
+        in_progress: false,
         description: 'Estudar fundamentos básicos de Node',
+      },
+      {
+        name: 'React',
+        in_progress: true,
+        description: 'Estudar fundamentos básicos de React',
+      },
+      {
+        name: 'React Native',
+        in_progress: false,
+        description: 'Estudar fundamentos básicos de React Native',
       },
     ], {});
   },

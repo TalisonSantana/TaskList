@@ -4,7 +4,7 @@ import * as chai from "chai";
 import chaiHttp = require("chai-http");
 
 import { app } from "../app";
-import Task from "../database/models/Task";
+import Task from "../database/models/task";
 
 chai.use(chaiHttp);
 

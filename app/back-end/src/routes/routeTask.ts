@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import entityTask from '../entities/entityTask';
+import EntityTask from '../entities/entityTask';
 
 const routeUser = Router();
 
-routeUser.get('/', entityTask().getAllTasks);
-routeUser.post('/', entityTask().createTask);
-routeUser.put('/:id', entityTask().updateTask);
-routeUser.delete('/:id', entityTask().deleteTask);
+routeUser.get('/', EntityTask().getAllTasks);
+routeUser.post('/', EntityTask().createTask);
+routeUser.put('/:id', EntityTask().updateTask);
+routeUser.delete('/:id', EntityTask().deleteTask);
 
 export default routeUser;
