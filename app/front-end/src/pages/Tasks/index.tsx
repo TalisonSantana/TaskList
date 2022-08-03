@@ -1,23 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
-import ITask from "../../interfaces/ITask";
-import { BiListPlus } from "react-icons/bi";
+import React, { useContext, useEffect } from "react";
 import Header from "./components/Header/index";
 import Tenor from "../../utils/tenor.gif";
-import InformationTask from "./components/InformationTask";
 import CreateTaskModal from "./components/Modal/CreateTaskModal";
 import EditTaskModal from "./components/Modal/EditTaskModal";
 import DeleteTaskModal from "./components/Modal/DeleteTaskModal";
 
 import NoTasks from "../../pages/NoTasks";
 import MyContext from "../../context";
+import Main from "./components/Main";
 
 function Tasks() {
-  const { tasks, isLoading, setIsLoading, loadTasks } = useContext(MyContext);
-
-  const [task, setTask] = useState<ITask>({} as ITask);
-  const [isDeleteTaskModal, setIsDeleteTaskModal] = useState<boolean>(false);
-  const [isCreateTaskModal, setIsCreateTaskModal] = useState<boolean>(false);
-  const [isEditTaskModal, setIsEditTaskModal] = useState<boolean>(false);
+  const {
+    tasks,
+    isLoading,
+    setIsLoading,
+    loadTasks,
+    isDeleteTaskModal,
+    task,
+    setIsDeleteTaskModal,
+    isEditTaskModal,
+    setIsEditTaskModal,
+    isCreateTaskModal,
+    setIsCreateTaskModal,
+  } = useContext(MyContext);
 
   useEffect(() => {
     if (isLoading) {
@@ -59,45 +64,7 @@ function Tasks() {
             <img src={Tenor} alt="description"></img>
           </div>
         )}
-        {!isLoading && tasks.length > 0 && (
-          <div className="h-full w-full">
-            <div className="xxs:text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl flex to-black mr-2 justify-between ">
-              <div>
-                <div>Name</div>
-              </div>
-              <div>
-                <div>Description</div>
-              </div>
-              <div>
-                <div>In Progress</div>
-              </div>
-              <div className="flex">
-                <div
-                  onClick={() => setIsCreateTaskModal(true)}
-                  className="icon-add"
-                >
-                  <BiListPlus fontSize="25px" />
-                </div>
-              </div>
-            </div>
-            <div className="overflow-y-auto h-full max-h-9/10 container-task">
-              {tasks.map((task: ITask) => (
-                <InformationTask
-                  key={task.id}
-                  task={task}
-                  setEditTask={() => {
-                    setIsEditTaskModal(true);
-                    setTask(task);
-                  }}
-                  setDeleteTask={() => {
-                    setTask(task);
-                    setIsDeleteTaskModal(true);
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        )}
+        {!isLoading && tasks.length > 0 && <Main />}
       </div>
     </div>
   );

@@ -7,6 +7,10 @@ function MyProvider({ children }: { children: React.ReactNode }) {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [tasksFilter, setTasksFilter] = useState<ITask[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [task, setTask] = useState<ITask>({} as ITask);
+  const [isDeleteTaskModal, setIsDeleteTaskModal] = useState<boolean>(false);
+  const [isCreateTaskModal, setIsCreateTaskModal] = useState<boolean>(false);
+  const [isEditTaskModal, setIsEditTaskModal] = useState<boolean>(false);
 
   async function loadTasks() {
     try {
@@ -19,6 +23,7 @@ function MyProvider({ children }: { children: React.ReactNode }) {
 
     setIsLoading(false);
   }
+
   function inputSearch(value: string) {
     if (value.length > 0) {
       const newTasks = tasksFilter.filter((task) =>
@@ -46,6 +51,14 @@ function MyProvider({ children }: { children: React.ReactNode }) {
     setIsLoading,
     loadTasks,
     statusSearch,
+    task,
+    setTask,
+    isDeleteTaskModal,
+    setIsDeleteTaskModal,
+    isCreateTaskModal,
+    setIsCreateTaskModal,
+    isEditTaskModal,
+    setIsEditTaskModal,
   };
 
   return <MyContext.Provider value={store}>{children}</MyContext.Provider>;
