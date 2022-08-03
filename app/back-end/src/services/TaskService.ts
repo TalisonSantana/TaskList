@@ -17,14 +17,14 @@ export default class TaskService {
   }
 
   async updateTask(id: number, body: ITask): Promise<[affectedCount: number]> {
-    const { taskName, description } = body;
+    const { name, description } = body;
 
-    if (taskName === undefined || description === undefined) {
+    if (name === undefined || description === undefined) {
       throw Object.assign(new Error("Name and description are required"), {
         code: 401,
       });
     }
-    if (taskName.length < 3) {
+    if (name.length < 3) {
       throw Object.assign(
         new Error("Name must be at least 3 characters long"),
         { code: 401 }
@@ -41,14 +41,14 @@ export default class TaskService {
   }
 
   async createTask(body: ITask): Promise<ITask> {
-    const { taskName, description } = body;
+    const { name, description } = body;
 
-    if (taskName === undefined || description === undefined) {
+    if (name === undefined || description === undefined) {
       throw Object.assign(new Error("Name and description are required"), {
         code: 401,
       });
     }
-    if (taskName.length < 3) {
+    if (name.length < 3) {
       throw Object.assign(
         new Error("Name must be at least 3 characters long"),
         { code: 401 }

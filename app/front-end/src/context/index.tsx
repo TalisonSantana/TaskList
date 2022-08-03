@@ -1,5 +1,5 @@
-import { createContext } from 'react';
-import { IConextTask } from '../interfaces/ITask';
+import { createContext } from "react";
+import { IConextTask } from "../interfaces/IConextTask";
 
 const MyContext = createContext<IConextTask>({} as IConextTask);
 

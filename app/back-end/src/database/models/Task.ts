@@ -1,9 +1,9 @@
-import { DataTypes, Model } from 'sequelize';
-import db from '.';
+import { DataTypes, Model } from "sequelize";
+import db from ".";
 
 class Task extends Model {
   public id!: number;
-  public taskName!: string;
+  public name!: string;
   public inProgress!: boolean;
   public description!: string;
 }
@@ -15,26 +15,26 @@ Task.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    taskName: {
+    name: {
       type: DataTypes.STRING,
-      field: 'task_name',
+      field: "name",
     },
     inProgress: {
       type: DataTypes.BOOLEAN,
-      field: 'in_progress',
+      field: "in_progress",
       defaultValue: true,
     },
     description: {
       type: DataTypes.STRING,
-      field: 'description',
+      field: "description",
     },
   },
   {
     underscored: true,
     sequelize: db,
-    modelName: 'task',
+    modelName: "task",
     timestamps: false,
-  },
-)
+  }
+);
 
 export default Task;

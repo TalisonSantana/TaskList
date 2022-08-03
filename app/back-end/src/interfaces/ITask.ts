@@ -1,6 +1,6 @@
 export default interface ITask {
   id: number | string;
-  taskName: string;
+  name: string;
   description: string;
   inProgress: boolean | string;
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ITask from "../interfaces/ITask";
-import api from "../services/rest/TaskService";
+import { getTasks } from "../services/rest/TaskService";
 import MyContext from "./index";
 
 function MyProvider({ children }: { children: React.ReactNode }) {
@@ -10,18 +10,19 @@ function MyProvider({ children }: { children: React.ReactNode }) {
 
   async function loadTasks() {
     try {
-      const response = await api.get("/tasks");
-      setTasks(response.data);
-      setTasksFilter(response.data);
+      const response = await getTasks();
+      setTasks(response);
+      setTasksFilter(response);
     } catch (error: any) {
       window.alert(error.message);
     }
+
     setIsLoading(false);
   }
   function inputSearch(value: string) {
     if (value.length > 0) {
       const newTasks = tasksFilter.filter((task) =>
-        task.taskName.toLowerCase().includes(value.toLowerCase())
+        task.name.toLowerCase().includes(value.toLowerCase())
       );
       setTasks(newTasks);
     } else if (value.length === 0) {

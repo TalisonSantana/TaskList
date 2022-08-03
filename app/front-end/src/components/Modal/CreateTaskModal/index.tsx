@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "../../../services/rest/TaskService";
+import { createTask } from "../../../services/rest/TaskService";
 
 function CreateTaskModal({
   setIsLoading,
@@ -18,11 +18,7 @@ function CreateTaskModal({
 
   async function handleSaveTask() {
     try {
-      await api.post(`/tasks`, {
-        taskName: name,
-        description,
-        inProgress,
-      });
+      await createTask({ name, description, inProgress });
       window.alert("Task created successfully");
     } catch (error: any) {
       window.alert(error.response.data.message);
@@ -33,11 +29,11 @@ function CreateTaskModal({
 
   return (
     <div id="modal" onClick={handleClose} className="container-modal">
-      <div className="w-96 h-37 relative bg-white information-modal">
+      <div className="w-96 h-45 relative bg-white information-modal">
         <div className="flex justify-center">
           <div>Create Task</div>
         </div>
-        <div className="p-1 form">
+        <div className="p-1 pl-1">
           <div>
             <label htmlFor="name">Name: </label>
             <input
@@ -48,17 +44,17 @@ function CreateTaskModal({
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div>
+          <div className="mt-2">
             <label htmlFor="description">Description: </label>
             <input
-              className="border-solid border-1 bg-white mt-1"
+              className="border-solid border-1 bg-white"
               type="text"
               name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className="pt-1">
+          <div className="mt-2">
             <label htmlFor="inProgress">In Progress: </label>
             <select
               className="border-solid border-1 bg-white"
@@ -70,7 +66,7 @@ function CreateTaskModal({
               <option value="false">false</option>
             </select>
           </div>
-          <div className="flex justify-around items-center mt-1">
+          <div className="flex justify-around items-center mt-4">
             <div>
               <button
                 className="p-1 border-solid border-1 button"

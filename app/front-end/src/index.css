@@ -8,6 +8,7 @@ li {
 
 body {
   font-family: sans-serif;
+  overflow-x: hidden;
 }
 
 .container-modal {
@@ -39,11 +40,6 @@ body {
   margin-top: 5px;
   background-color: #e7e9ee;
   border: solid 1px;
-}
-
-.form {
-  background-color: #f0f0f2 !important;
-  padding-left: 5px;
 }
 
 .shadow-container {

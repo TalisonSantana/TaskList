@@ -1,5 +1,4 @@
-export default interface ITask {
-  id: number;
+export interface ISetTask {
   name: string;
   description: string;
   inProgress: boolean | string;
