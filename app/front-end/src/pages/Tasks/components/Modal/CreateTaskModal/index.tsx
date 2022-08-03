@@ -1,42 +1,37 @@
 import React, { useState } from "react";
-import ITask from "../../../interfaces/ITask";
-import { updateTask } from "../../../services/rest/TaskService";
+import { createTask } from "../../../../../services/rest/taskService";
 
-function EditTaskModal({
+function CreateTaskModal({
   setIsLoading,
-  task,
-  setIsEditTaskModal,
+  setIsCreateTaskModal,
 }: {
-  task: ITask;
   setIsLoading: () => void;
-  setIsEditTaskModal: () => void;
+  setIsCreateTaskModal: () => void;
 }) {
-  const [name, setName] = useState(task.name);
-  const [description, setDescription] = useState(task.description);
-  const [inProgress, setInProgress] = useState(
-    task.inProgress ? "true" : "false"
-  );
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [inProgress, setInProgress] = useState("true");
 
   function handleClose({ target: { id } }: any): void {
-    if (id === "modal") setIsEditTaskModal();
+    if (id === "modal") setIsCreateTaskModal();
   }
 
   async function handleSaveTask() {
     try {
-      await updateTask({ name, description, inProgress, id: task.id });
-      setIsEditTaskModal();
-      setIsLoading();
-      window.alert("Task updated successfully");
+      await createTask({ name, description, inProgress });
+      window.alert("Task created successfully");
     } catch (error: any) {
       window.alert(error.response.data.message);
     }
+    setIsCreateTaskModal();
+    setIsLoading();
   }
 
   return (
     <div id="modal" onClick={handleClose} className="container-modal">
       <div className="w-96 h-45 relative bg-white information-modal">
         <div className="flex justify-center">
-          <div>Edit Task</div>
+          <div>Create Task</div>
         </div>
         <div className="p-1 pl-1">
           <div>
@@ -71,19 +66,21 @@ function EditTaskModal({
               <option value="false">false</option>
             </select>
           </div>
-          <div className="flex justify-around items-center m-4">
+          <div className="flex justify-around items-center mt-4">
             <div>
               <button
                 className="p-1 border-solid border-1 button"
+                type="button"
                 onClick={handleSaveTask}
               >
                 Save
               </button>
             </div>
-            <div className="button">
+            <div>
               <button
                 className="p-1 border-solid border-1 button"
-                onClick={setIsEditTaskModal}
+                type="button"
+                onClick={setIsCreateTaskModal}
               >
                 Cancel
               </button>
@@ -95,4 +92,4 @@ function EditTaskModal({
   );
 }
 
-export default EditTaskModal;
+export default CreateTaskModal;
