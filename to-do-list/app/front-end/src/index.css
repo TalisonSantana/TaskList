@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.container-modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  z-index: 9999;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.information-modal {
+  z-index: 9999999;
+}
+
+.button {
+  background-color: #f0f0f2 !important;
+}
+
+.button:hover {
+  background-color: #e7e9ee !important;
+}
+
+.input {
+  margin-top: 5px;
+  background-color: #e7e9ee;
+  border: solid 1px;
+}
+
+.shadow-container {
+  box-shadow: -3px 0px 53px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container-task::-webkit-scrollbar {
+  width: 7px;
+}
+
+.container-task::-webkit-scrollbar-thumb {
+  background-color: #e7e9ee;
+  border-radius: 6px;
+}
+
+.information-task {
+  background-color: #f0f0f2;
+  color: #333333;
+}
+
+.information-task:hover {
+  background-color: #e7e9ee;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-add {
+  color: #0b8b49;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon-delete {
+  color: #750008;
+}
+
+.icon-edit {
+  color: #cfc815;
+}
