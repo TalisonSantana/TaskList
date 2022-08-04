@@ -1,9 +1,7 @@
-Para rodar o projeto, você precisa ter o MySql instalado,
-ou pode rodar o MySql pelo docker, é só digitar esse comando no terminal:
-docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=docker -d -p 3306:3306 mysql:5.7
-Após isso entre na pasta app/back-end, entrando na pasta, digite npm start no terminal, 
-espere alguns segundo até criar o banco e o servidor expor a porta 3001 do back-end,
-e por fim, volte uma pasta e entre na pasta front-end e digite npm start, aguarde alguns segundos
-e sua porta 3000 estará exposta para uso no browser, pronto!!
+Para colar o projeto é só abrir seu terminal, no diretório desejado e
+colar o seguint comando: gir clone https://github.com/TalisonSantana/TaskList.git
+Antes de rodar a aplicação você precisa ter o Docekr instalado em sua máquina,
+Após instalar o docker é só digitar os seguintes comandos no prompt: cd TaskList && npm run compose:up
+e é só aguardar alguns segundos que sua aplicação logo estará disponível na porta http://localhost:3000 do seu browser, pronto!!
 Agora é só aproveitar sua lista de tarefas, nela você pode vizualizar suas tarefas que estão
 em progresso ou não, editar, excluír e até mesmo criar várias tarefas.
