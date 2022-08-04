@@ -42,7 +42,7 @@ services:
       - MYSQL_ROOT_PASSWORD=123456
     restart: "always"
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "db"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 10s
       retries: 5
     cap_add:
